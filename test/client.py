@@ -1,14 +1,16 @@
 # Import socket module
 import socket
+from decouple import config
 
 # Create a socket object
 s = socket.socket()
 
 # Define the port on which you want to connect
-port = 12345
+DOMAIN = config('domain')
+PORT = config('port')
 
 # connect to the server on local computer
-s.connect(('127.0.0.1', port))
+s.connect((DOMAIN, PORT))
 
 # receive data from the server
 print(s.recv(1024))
